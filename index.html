@@ -234,6 +234,48 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+
+        /* Add this media query at the end of your CSS */
+@media (max-width: 768px) {
+    .journey-wheel {
+        width: 320px;
+        height: 320px;
+    }
+
+    .journey-item {
+        width: 90px;
+        height: 90px;
+        padding: 8px;
+        font-size: 0.8em;
+    }
+
+    .journey-image {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 5px;
+    }
+
+    /* Position adjustments for mobile */
+    .journey-item:nth-child(1) { top: 5%; left: 30%; }
+    .journey-item:nth-child(2) { top: 15%; right: 5%; }
+    .journey-item:nth-child(3) { top: 50%; right: 0%; }
+    .journey-item:nth-child(4) { bottom: 10%; right: 15%; }
+    .journey-item:nth-child(5) { bottom: 10%; left: 15%; }
+    .journey-item:nth-child(6) { top: 50%; left: 0%; }
+    .journey-item:nth-child(7) { top: 15%; left: 5%; }
+    
+    .journey-item div {
+        font-size: 1.1em;
+        line-height: 1.2;
+    }
+    
+    .journey-item small {
+        font-size: 0.7em;
+        display: block;
+        margin-top: 3px;
+    }
+}
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -252,7 +294,7 @@
     <section id="home" class="page-section active-section">
         <div class="hero-section">
             <img src="A1.jpg" alt="Beautiful Mom" class="main-photo">
-            <h1 class="hero-title">Happy 40th Birthday, Mom! 🎂</h1>
+            <h1 class="hero-title">Happy 41th Birthday, Mom! 🎂</h1>
             
             <div class="gift-container" onclick="openLetter()">
                 <div class="gift-box">
