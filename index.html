@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 40th Birthday, Super Mom! 🌸</title>
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #ff4081;
+            --accent-color: #f50057;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        body {
+            background: linear-gradient(45deg, #fff3f4, #ffe9e9);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 30px;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-item:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .page-section {
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .active-section {
+            display: block;
+            opacity: 1;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding-top: 150px;
+        }
+
+        .hero-title {
+            font-size: 4em;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-family: 'Dancing Script', cursive;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .gift-container {
+            text-align: center;
+            margin: 50px 0;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .gift-box {
+            display: inline-block;
+            position: relative;
+            transition: transform 0.5s;
+        }
+
+        .lid {
+            width: 200px;
+            height: 50px;
+            background: #ff4081;
+            border-radius: 5px;
+            transform-origin: bottom;
+            transition: transform 0.5s;
+        }
+
+        .box {
+            width: 180px;
+            height: 120px;
+            background: #ff79b0;
+            margin-top: -10px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .ribbon {
+            width: 40px;
+            height: 100px;
+            background: gold;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            clip-path: polygon(0 0, 100% 0, 60% 100%, 40% 100%);
+        }
+
+        .tap-text {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .modern-letter {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+
+        .journey-wheel {
+            width: 600px;
+            height: 600px;
+            max-width: 90%;
+            margin: 50px auto;
+            position: relative;
+            background: linear-gradient(45deg, #fff0f7, #ffdde1);
+            border-radius: 50%;
+            animation: rotateWheel 60s linear infinite;
+        }
+
+        .journey-item {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            flex-direction: column;
+        }
+
+        .journey-item:hover {
+            transform: scale(1.1) rotate(-10deg);
+            z-index: 100;
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: white;
+            padding: 15px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* Image Styles */
+        .main-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            object-fit: cover;
+            margin: 20px auto;
+        }
+
+        .journey-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotateWheel {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="confetti">🎉🌸🎊</div>
+    
+    <div class="nav-container">
+        <nav class="nav-menu">
+            <div class="nav-item" onclick="showSection('home')">Home 🏡</div>
+            <div class="nav-item" onclick="showSection('journey')">Our Journey 🛤️</div>
+
+        </nav>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home" class="page-section active-section">
+        <div class="hero-section">
+            <img src="A1.jpg" alt="Beautiful Mom" class="main-photo">
+            <h1 class="hero-title">Happy 40th Birthday, Mom! 🎂</h1>
+            
+            <div class="gift-container" onclick="openLetter()">
+                <div class="gift-box">
+                    <div class="lid"></div>
+                    <div class="box"></div>
+                    <div class="ribbon"></div>
+                </div>
+                <p class="tap-text">Tap Your Special Gift 🎁</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="page-section">
+        <div class="journey-wheel">
+            <div class="journey-item" style="top: 10%; left: 35%; background: #fff3f4">
+                <img src="a11.jpg" class="journey-image" alt="Birth Year">
+                <div>🎉 1984<br><small>Our Star Was Born</small></div>
+            </div>
+            <div class="journey-item" style="top: 20%; right: 10%; background: #ffebee">
+                <img src="A3.jpg" class="journey-image" alt="Wedding">
+                <div>💍 2000<br><small>Beautiful Wedding</small></div>
+            </div>
+            <div class="journey-item" style="top: 50%; right: 5%; background: #fce4ec">
+                <img src="A4.jpg" class="journey-image" alt="Naveen">
+                <div>👶 2001<br><small>Naveen Arrived</small></div>
+            </div>
+            <div class="journey-item" style="bottom: 10%; right: 20%; background: #f8bbd0">
+                <img src="A5.jpg" class="journey-image" alt="Divya">
+                <div>👧 2004<br><small>Divya's Advent</small></div>
+            </div>
+            <div class="journey-item" style="bottom: 10%; left: 20%; background: #f48fb1">
+                <img src="A6.jpg" class="journey-image" alt="Soundarya">
+                <div>👸 2009<br><small>Soundarya's Debut</small></div>
+            </div>
+            <div class="journey-item" style="top: 50%; left: 5%; background: #ff80ab">
+                <img src="A7.jpg" class="journey-image" alt="New Home">
+                <div>🏠 2015<br><small>New Home Sweet Home</small></div>
+            </div>
+            <div class="journey-item" style="top: 20%; left: 10%; background: #ff4081">
+                <img src="A9.jpg" class="journey-image" alt="Celebration">
+                <div>🎂 2025<br><small>41 Years of Glory!</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Letter Modal -->
+    <div class="modern-letter" id="englishLetter">
+        <div class="close-btn" onclick="closeLetter()">×</div>
+        <div class="letter-content">
+            <h2>To Our Super Mom 🌸</h2>
+            <div class="promise-box">
+                <p>Dearest Mummy,</p>
+                
+                <p>This isn't just a birthday note - it's a pinky promise from our hearts! 🤞</p>
+
+                <div class="promise">💖 We'll turn every tear into smiles</div>
+                <div class="promise">🌟 Your strength is our guiding light</div>
+                <div class="promise">🌈 Brighter days are coming - we promise!</div>
+
+                <p>Remember:<br>
+                - This phase is temporary<br>
+                - We three are your forever team<br>
+                - Your happiness is our mission</p>
+
+                <p>We need you to:<br>
+                😊 Keep that beautiful smile shining<br>
+                🕊️ Let go of worries - trust in us<br>
+                🎉 Stay strong to see all our successes!</p>
+
+                <p class="signature">Forever Your Children,<br>
+                Naveen, Divya & Soundarya 💝</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <button class="music-btn" onclick="toggleMusic()">🎵</button>
+        <audio id="birthdaySong" loop>
+            <source src="Amma-En-Mudhal-Vari-Nee-Amma-Mother-Tamil-Song.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active-section');
+            });
+            document.getElementById(sectionId).classList.add('active-section');
+        }
+
+        function openLetter() {
+            document.getElementById('englishLetter').style.display = 'block';
+            document.querySelector('.gift-container').style.opacity = '0';
+            document.querySelector('.lid').style.transform = 'rotateX(180deg)';
+        }
+
+        function closeLetter() {
+            document.getElementById('englishLetter').style.display = 'none';
+            document.querySelector('.gift-container').style.opacity = '1';
+            document.querySelector('.lid').style.transform = 'rotateX(0deg)';
+        }
+
+        const audio = document.getElementById('birthdaySong');
+        let isPlaying = false;
+        function toggleMusic() {
+            isPlaying ? audio.pause() : audio.play();
+            isPlaying = !isPlaying;
+            document.querySelector('.music-btn').style.animation = isPlaying ? 'pulse 1s infinite' : 'none';
+        }
+
+        function createConfetti() {
+            const container = document.querySelector('.confetti');
+            const emojis = ['🌸', '🎉', '🎊', '💖', '🎂'];
+            for(let i=0; i<50; i++) {
+                const confetti = document.createElement('span');
+                confetti.style.position = 'absolute';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animation = `fall ${Math.random()*3+2}s linear infinite`;
+                confetti.style.fontSize = Math.random()*20 + 10 + 'px';
+                confetti.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+                container.appendChild(confetti);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createConfetti();
+            audio.volume = 0.3;
+        });
+    </script>
+</body>
+</html>
